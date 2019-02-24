@@ -48,9 +48,8 @@ void q_free(queue_t *q)
             free(temp->value);
             free(temp);
         }
+        free(q);
     }
-
-    free(q);
 }
 
 /*
@@ -118,6 +117,7 @@ bool q_insert_tail(queue_t *q, char *s)
         free(newh);
         return false;
     }
+
     memset(val, 0, len);
     strncpy(val, s, len - 1);
 
@@ -186,6 +186,10 @@ int q_size(queue_t *q)
 void q_reverse(queue_t *q)
 {
     /* You need to write the code for this function */
+
+    if (q == NULL || q->head == NULL || q->head->next == NULL)
+        return;
+
     list_ele_t *a = NULL;
     list_ele_t *b = q->head;
     list_ele_t *c;
