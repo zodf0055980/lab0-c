@@ -70,7 +70,8 @@ bool q_insert_head(queue_t *q, char *s)
     /* What if either call to malloc returns NULL? */
     if (newh == NULL)
         return false;
-    int len = sizeof(s) + 1;  // '/0' so +1
+    // int len = sizeof(s) + 1;  // '/0' so +1
+    int len = strlen(s) + 1;
     char *val = malloc(len * sizeof(char));
     if (val == NULL) {
         free(newh);
@@ -111,7 +112,8 @@ bool q_insert_tail(queue_t *q, char *s)
     newh = malloc(sizeof(list_ele_t));
     if (newh == NULL)
         return false;
-    int len = sizeof(s) + 1;  // '/0' so +1
+    // int len = sizeof(s) + 1;  // '/0' so +1
+    int len = strlen(s) + 1;
     char *val = malloc(len * sizeof(char));
     if (val == NULL) {
         free(newh);
